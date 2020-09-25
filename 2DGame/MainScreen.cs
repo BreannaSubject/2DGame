@@ -12,9 +12,18 @@ namespace _2DGame
 {
     public partial class MainScreen : UserControl
     {
+        bool spaceDown = false;
         public MainScreen()
         {
             InitializeComponent();
+        }
+
+        private void MainScreen_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keys.Space == e.KeyCode)
+            {
+                spaceDown = true;
+            }
         }
     }
 }

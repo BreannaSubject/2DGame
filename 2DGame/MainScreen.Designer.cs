@@ -77,6 +77,7 @@
             this.Controls.Add(this.titleLabel);
             this.Name = "MainScreen";
             this.Size = new System.Drawing.Size(900, 500);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainScreen_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
