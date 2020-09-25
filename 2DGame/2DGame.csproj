@@ -59,6 +59,8 @@
     <Compile Include="GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hero.cs" />
+    <Compile Include="Jewel.cs" />
     <Compile Include="MainScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>

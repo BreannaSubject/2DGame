@@ -1,30 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _2DGame
 {
-    class Crab
+    class Jewel
     {
-        public int size, x, y;
-        public Color colour;
-
-        public Crab(int _size, int _x, int _y, Color _colour)
+        int width, height, x, y;
+        int colour;
+        public Jewel (int _width, int _height, int _x, int _y, int _colour)
         {
-            size = _size;
+            width = _width;
+            height = _height; 
             colour = _colour;
-            x = _x;
             y = _y;
-
+            x = _x;
         }
 
         public void Move(int speed)
         {
-            x += speed;
+            y += speed;
         }
-
     }
 }
