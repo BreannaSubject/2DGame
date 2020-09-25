@@ -24,6 +24,14 @@ namespace _2DGame
             {
                 spaceDown = true;
             }
+
+            if (spaceDown == true)
+            {
+                GameScreen gs = new GameScreen();
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                f.Controls.Add(gs);
+            }
         }
     }
 }
