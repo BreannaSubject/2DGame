@@ -6,15 +6,12 @@ using System.Threading.Tasks;
 
 namespace _2DGame
 {
-    class Jewel
+    class Bubbles
     {
-        int width, height, x, y;
-        int colour;
-        public Jewel (int _width, int _height, int _x, int _y, int _colour)
+        int size, x, y;
+        public Bubbles (int _size, int _x, int _y)
         {
-            width = _width;
-            height = _height; 
-            colour = _colour;
+            size = _size;
             y = _y;
             x = _x;
         }

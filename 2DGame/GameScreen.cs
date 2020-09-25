@@ -13,18 +13,21 @@ namespace _2DGame
     public partial class GameScreen : UserControl
     {
         Random random = new Random();
+        int tick = 0;
 
         //crab variables
-        List<Crab> crabs = new List<Crab>();
+        List<Crab> topCrabs = new List<Crab>();
+        List<Crab> bottomCrabs = new List<Crab>();
         const int CRAB_SIZE = 30;
-        int crabSpeed = 6;
-        SolidBrush crabBrush = new SolidBrush(Color.Red);
-        Color crabsColour; 
+        int crabSpeed = 3, crabSpace = 150;
+        SolidBrush topCrabBrush = new SolidBrush(Color.Red);
+        SolidBrush bottomCrabBrush = new SolidBrush(Color.Orange);
+        Color topCrabsColour, bottomCrabsColour; 
 
-        //jewel variables
-        List<Jewel> jewels = new List<Jewel>();
-        const int JEWEL_SPEED = 10, JEWEL_WIDTH = 30, JEWEL_HEIGHT = 50;
-        Boolean jewelColour;
+        //bubble variables
+        List<Bubbles> bubbles = new List<Bubbles>();
+        const int BUBBLE_SPEED = 10, BUBBLE_SIZE = 30;
+        
 
         //hero variables
         Hero hero;
@@ -85,50 +88,95 @@ namespace _2DGame
 
         public void MakeCrabs()
         {
-            int crabY = random.Next(80, 421);
-            int crabColour = random.Next(1, 3);
+            int topCrabY = random.Next(20, 201 - CRAB_SIZE);
+            int bottomCrabY = random.Next(200 + CRAB_SIZE, 401 - CRAB_SIZE);
+            int topCrabColour = random.Next(1, 3);
+            int bottomCrabColour = random.Next(1, 3);
+            
 
-            if (crabColour == 1)
+            if (topCrabColour == 1)
             {
-                crabsColour = Color.Red;
+                topCrabsColour = Color.Red;
             }
             else
             {
-                crabsColour = Color.Orange;
+                topCrabsColour = Color.Orange;
             }
 
-            Crab crab = new Crab(CRAB_SIZE, 0, crabY, crabsColour);
-            crabs.Add(crab);
+            if (bottomCrabColour == 1)
+            {
+                bottomCrabsColour = Color.Red;
+            }
+            else
+            {
+                bottomCrabsColour = Color.Orange;
+            }
+
+            Crab topCrab = new Crab(CRAB_SIZE, 0, topCrabY, topCrabsColour);
+            Crab bottomCrab = new Crab(CRAB_SIZE, 0, bottomCrabY, bottomCrabsColour);
+            topCrabs.Add(topCrab);
+            bottomCrabs.Add(bottomCrab);
         }
 
         private void gameLoopTimer_Tick(object sender, EventArgs e)
         {
-            foreach (Crab c in crabs)
+            tick++;
+
+            if (tick == 400)
+            {
+                crabSpeed++;
+                crabSpace = crabSpace - 10;
+                tick = 0;
+            }
+            foreach (Crab c in topCrabs)
             {
                 c.Move(crabSpeed);
 
             }
 
-            if (crabs[0].x > 800)
+            if (topCrabs[0].x > 900)
             {
-                crabs.RemoveAt(0);
+                topCrabs.RemoveAt(0);
             }
 
-            if (crabs[crabs.Count - 1].x >= 60)
+            if (topCrabs[topCrabs.Count - 1].x >= crabSpace)
             {
                 MakeCrabs();
             }
-           
+
+            foreach (Crab c in bottomCrabs)
+            {
+                c.Move(crabSpeed);
+
+            }
+
+            if (bottomCrabs[0].x > 900)
+            {
+                bottomCrabs.RemoveAt(0);
+            }
+
+            if (bottomCrabs[bottomCrabs.Count - 1].x >= crabSpace)
+            {
+                MakeCrabs();
+            }
+
+
 
 
             Refresh();
         }
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            foreach (Crab c in crabs)
+            foreach (Crab c in topCrabs)
             {
-                crabBrush.Color = c.colour;
-                e.Graphics.FillRectangle(crabBrush, c.x, c.y, c.size, c.size);
+                topCrabBrush.Color = c.colour;
+                e.Graphics.FillRectangle(topCrabBrush, c.x, c.y, c.size, c.size);
+            }
+
+            foreach (Crab c in bottomCrabs)
+            {
+                bottomCrabBrush.Color = c.colour;
+                e.Graphics.FillRectangle(bottomCrabBrush, c.x, c.y, c.size, c.size);
             }
         }
 

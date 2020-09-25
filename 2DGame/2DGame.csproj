@@ -60,7 +60,7 @@
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Hero.cs" />
-    <Compile Include="Jewel.cs" />
+    <Compile Include="Bubbles.cs" />
     <Compile Include="MainScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
