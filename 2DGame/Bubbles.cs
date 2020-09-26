@@ -8,7 +8,7 @@ namespace _2DGame
 {
     class Bubbles
     {
-        int size, x, y;
+        public int size, x, y;
         public Bubbles (int _size, int _x, int _y)
         {
             size = _size;

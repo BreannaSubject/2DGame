@@ -18,21 +18,22 @@ namespace _2DGame
         //crab variables
         List<Crab> topCrabs = new List<Crab>();
         List<Crab> bottomCrabs = new List<Crab>();
-        const int CRAB_SIZE = 30;
-        int crabSpeed = 3, crabSpace = 150;
+        const int CRAB_SIZE = 20;
+        int crabSpeed = 4, crabSpace = 120;
         SolidBrush topCrabBrush = new SolidBrush(Color.Red);
         SolidBrush bottomCrabBrush = new SolidBrush(Color.Orange);
         Color topCrabsColour, bottomCrabsColour; 
 
         //bubble variables
         List<Bubbles> bubbles = new List<Bubbles>();
-        const int BUBBLE_SPEED = 10, BUBBLE_SIZE = 30;
+        const int BUBBLE_SPEED = 10, BUBBLE_SIZE = 20;
+        SolidBrush bubbleBrush = new SolidBrush(Color.MidnightBlue);
         
 
         //hero variables
         Hero hero;
         int heroSpeed;
-        const int HERO_WIDTH = 30, HERO_HEIGHT = 50;
+        const int HERO_WIDTH = 20, HERO_HEIGHT = 40;
 
         
 
@@ -118,16 +119,43 @@ namespace _2DGame
             bottomCrabs.Add(bottomCrab);
         }
 
+        public void MakeBubbles()
+        {
+            int bubbleX = random.Next(30, this.Width - 29);
+            Bubbles bubble = new Bubbles(BUBBLE_SIZE, bubbleX, 0);
+            bubbles.Add(bubble);
+        }
+
         private void gameLoopTimer_Tick(object sender, EventArgs e)
         {
             tick++;
+
+            if (tick == 200)
+            {
+                MakeBubbles();
+            }
 
             if (tick == 400)
             {
                 crabSpeed++;
                 crabSpace = crabSpace - 10;
+                MakeBubbles();
                 tick = 0;
             }
+
+            foreach (Bubbles b in bubbles)
+            {
+                b.Move(BUBBLE_SPEED);
+            }
+
+            if (bubbles.Count() >= 1)
+            {
+                if (bubbles[0].y > this.Height)
+                {
+                    bubbles.RemoveAt(0);
+                }
+            }
+
             foreach (Crab c in topCrabs)
             {
                 c.Move(crabSpeed);
@@ -177,6 +205,11 @@ namespace _2DGame
             {
                 bottomCrabBrush.Color = c.colour;
                 e.Graphics.FillRectangle(bottomCrabBrush, c.x, c.y, c.size, c.size);
+            }
+
+            foreach(Bubbles b in bubbles)
+            {
+                e.Graphics.FillRectangle(bubbleBrush, b.x, b.y, b.size, b.size);
             }
         }
 
