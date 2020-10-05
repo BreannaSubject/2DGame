@@ -22,12 +22,15 @@ namespace _2DGame
         int crabSpeed = 4, crabSpace = 120;
         SolidBrush topCrabBrush = new SolidBrush(Color.Red);
         SolidBrush bottomCrabBrush = new SolidBrush(Color.Orange);
-        Color topCrabsColour, bottomCrabsColour; 
+        Image topCrabsColour, bottomCrabsColour;
+        Image Brian;
+        Image Craig;
 
         //bubble variables
         List<Bubbles> bubbles = new List<Bubbles>();
-        const int BUBBLE_SPEED = 10, BUBBLE_SIZE = 20;
+        const int BUBBLE_SPEED = 8, BUBBLE_SIZE = 20;
         SolidBrush bubbleBrush = new SolidBrush(Color.MidnightBlue);
+        Image Bubble;
 
 
         //hero variables
@@ -35,12 +38,19 @@ namespace _2DGame
         int heroSpeed = 6;
         const int HERO_WIDTH = 20, HERO_HEIGHT = 40;
         SolidBrush heroBrush = new SolidBrush(Color.Aquamarine);
+        Image Barry = Properties.Resources.Barry;
+        int score;
 
         
 
         public GameScreen()
         {
             InitializeComponent();
+
+            Brian = Properties.Resources.Brian;
+            Craig = Properties.Resources.Craig;
+            Bubble = Properties.Resources.Bubble;
+
         }
 
         private void GameScreen_Load(object sender, EventArgs e)
@@ -99,20 +109,20 @@ namespace _2DGame
 
             if (topCrabColour == 1)
             {
-                topCrabsColour = Color.Red;
+                topCrabsColour = Brian;
             }
             else
             {
-                topCrabsColour = Color.Orange;
+                topCrabsColour = Craig;
             }
 
             if (bottomCrabColour == 1)
             {
-                bottomCrabsColour = Color.Red;
+                bottomCrabsColour = Brian;
             }
             else
             {
-                bottomCrabsColour = Color.Orange;
+                bottomCrabsColour = Craig;
             }
 
             Crab topCrab = new Crab(CRAB_SIZE, 0, topCrabY, topCrabsColour);
@@ -224,6 +234,12 @@ namespace _2DGame
                 }
             }
 
+            if (hero.y < 0)
+            {
+                score++;
+                hero.y = this.Height - hero.height - 20;
+            }
+
             if (bubbles.Count() >= 1)
             {
                 foreach(Bubbles b in bubbles)
@@ -231,13 +247,7 @@ namespace _2DGame
                     Rectangle bubble = new Rectangle(b.x, b.y, b.size, b.size);
                     if (heroRec.IntersectsWith(bubble))
                     {
-                        int powerUp = random.Next(1, 3);
-
-                        if (powerUp == 1)
-                        {
-                            heroSpeed++;
-                        }
-                        else if (powerUp == 2 && crabSpeed > 1)
+                        if (crabSpeed > 1)
                         {
                             crabSpeed--;
                         }
@@ -253,22 +263,26 @@ namespace _2DGame
         {
             foreach (Crab c in topCrabs)
             {
-                topCrabBrush.Color = c.colour;
-                e.Graphics.FillRectangle(topCrabBrush, c.x, c.y, c.size, c.size);
+                //topCrabBrush.Color = c.colour;
+                //e.Graphics.FillRectangle(topCrabBrush, c.x, c.y, c.size, c.size);
+                Image image = topCrabsColour;
+                e.Graphics.DrawImage(c.image, c.x, c.y, c.size, c.size); 
             }
 
             foreach (Crab c in bottomCrabs)
             {
-                bottomCrabBrush.Color = c.colour;
-                e.Graphics.FillRectangle(bottomCrabBrush, c.x, c.y, c.size, c.size);
+                //bottomCrabBrush.Color = c.colour;
+                //e.Graphics.FillRectangle(bottomCrabBrush, c.x, c.y, c.size, c.size);
+                e.Graphics.DrawImage(c.image, c.x, c.y, c.size, c.size);
             }
 
             foreach(Bubbles b in bubbles)
             {
-                e.Graphics.FillRectangle(bubbleBrush, b.x, b.y, b.size, b.size);
+                //e.Graphics.FillRectangle(bubbleBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawImage(Bubble, b.x, b.y, b.size, b.size);
             }
-
-            e.Graphics.FillRectangle(heroBrush, hero.x, hero.y, hero.width, hero.height);
+            e.Graphics.DrawImage(Barry, hero.x, hero.y, hero.width, hero.height);
+            //e.Graphics.FillRectangle(heroBrush, hero.x, hero.y, hero.width, hero.height);
 
 
         }

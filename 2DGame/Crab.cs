@@ -10,12 +10,12 @@ namespace _2DGame
     class Crab
     {
         public int size, x, y;
-        public Color colour;
+        public Image image;
 
-        public Crab(int _size, int _x, int _y, Color _colour)
+        public Crab(int _size, int _x, int _y, Image _image)
         {
             size = _size;
-            colour = _colour;
+            image = _image;
             x = _x;
             y = _y;
 
