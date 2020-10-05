@@ -28,12 +28,13 @@ namespace _2DGame
         List<Bubbles> bubbles = new List<Bubbles>();
         const int BUBBLE_SPEED = 10, BUBBLE_SIZE = 20;
         SolidBrush bubbleBrush = new SolidBrush(Color.MidnightBlue);
-        
+
 
         //hero variables
         Hero hero;
-        int heroSpeed;
+        int heroSpeed = 6;
         const int HERO_WIDTH = 20, HERO_HEIGHT = 40;
+        SolidBrush heroBrush = new SolidBrush(Color.Aquamarine);
 
         
 
@@ -44,6 +45,7 @@ namespace _2DGame
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
+            hero = new Hero(HERO_WIDTH, HERO_HEIGHT, this.Width / 2 - HERO_WIDTH / 2, this.Height - HERO_HEIGHT - 30);
             MakeCrabs();
         }
 
@@ -128,6 +130,7 @@ namespace _2DGame
 
         private void gameLoopTimer_Tick(object sender, EventArgs e)
         {
+            
             tick++;
 
             if (tick == 200)
@@ -188,7 +191,60 @@ namespace _2DGame
                 MakeCrabs();
             }
 
+            if (Form1.leftArrowDown == true || Form1.rightArrowDown == true || Form1.downArrowDown == true || Form1.upArrowDown)
+            {
+                hero.Move(heroSpeed);
+            }
 
+            Rectangle heroRec = new Rectangle(hero.x, hero.y, hero.width, hero.height);
+
+            if (topCrabs.Count() >= 1)
+            {
+                foreach (Crab c in topCrabs)
+                {
+                    Rectangle tCrabs = new Rectangle(c.x, c.y, c.size, c.size);
+                    if (heroRec.IntersectsWith(tCrabs))
+                    {
+                        gameLoopTimer.Enabled = false;
+                    }
+
+                }
+            }
+
+            if (bottomCrabs.Count() >= 1)
+            {
+                foreach (Crab c in bottomCrabs)
+                {
+                    Rectangle bCrabs = new Rectangle(c.x, c.y, c.size, c.size);
+                    if (heroRec.IntersectsWith(bCrabs))
+                    {
+                        gameLoopTimer.Enabled = false;
+                    }
+
+                }
+            }
+
+            if (bubbles.Count() >= 1)
+            {
+                foreach(Bubbles b in bubbles)
+                {
+                    Rectangle bubble = new Rectangle(b.x, b.y, b.size, b.size);
+                    if (heroRec.IntersectsWith(bubble))
+                    {
+                        int powerUp = random.Next(1, 3);
+
+                        if (powerUp == 1)
+                        {
+                            heroSpeed++;
+                        }
+                        else if (powerUp == 2 && crabSpeed > 1)
+                        {
+                            crabSpeed--;
+                        }
+                    }
+                }
+            }
+            
 
 
             Refresh();
@@ -211,6 +267,10 @@ namespace _2DGame
             {
                 e.Graphics.FillRectangle(bubbleBrush, b.x, b.y, b.size, b.size);
             }
+
+            e.Graphics.FillRectangle(heroBrush, hero.x, hero.y, hero.width, hero.height);
+
+
         }
 
 
