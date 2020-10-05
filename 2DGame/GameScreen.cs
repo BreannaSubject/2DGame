@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace _2DGame
 {
@@ -40,6 +41,7 @@ namespace _2DGame
         SolidBrush heroBrush = new SolidBrush(Color.Aquamarine);
         Image Barry = Properties.Resources.Barry;
         int score;
+        SoundPlayer scoreSound = new SoundPlayer(Properties.Resources.glass_ping_Go445_1207030150);
 
         
 
@@ -238,6 +240,7 @@ namespace _2DGame
             {
                 score++;
                 hero.y = this.Height - hero.height - 20;
+                scoreSound.Play();
             }
 
             if (bubbles.Count() >= 1)
@@ -283,6 +286,8 @@ namespace _2DGame
             }
             e.Graphics.DrawImage(Barry, hero.x, hero.y, hero.width, hero.height);
             //e.Graphics.FillRectangle(heroBrush, hero.x, hero.y, hero.width, hero.height);
+            Font font = new Font("Arial", 16);
+            e.Graphics.DrawString(Convert.ToString(score), font, bubbleBrush, this.Width - 40, this.Height- 40);
 
 
         }

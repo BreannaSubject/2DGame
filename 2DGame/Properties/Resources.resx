@@ -130,4 +130,7 @@
   <data name="Craig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Craig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="glass_ping_Go445_1207030150" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\glass_ping-Go445-1207030150.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

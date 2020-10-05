@@ -113,5 +113,8 @@
   <ItemGroup>
     <None Include="Resources\Craig.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\glass_ping-Go445-1207030150.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
