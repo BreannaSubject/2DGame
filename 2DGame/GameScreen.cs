@@ -218,6 +218,10 @@ namespace _2DGame
                     if (heroRec.IntersectsWith(tCrabs))
                     {
                         gameLoopTimer.Enabled = false;
+                        GameOver go = new GameOver();
+                        Form f = this.FindForm();
+                        f.Controls.Remove(this);
+                        f.Controls.Add(go);
                     }
 
                 }
@@ -231,6 +235,10 @@ namespace _2DGame
                     if (heroRec.IntersectsWith(bCrabs))
                     {
                         gameLoopTimer.Enabled = false;
+                        GameOver go = new GameOver();
+                        Form f = this.FindForm();
+                        f.Controls.Remove(this);
+                        f.Controls.Add(go);
                     }
 
                 }
