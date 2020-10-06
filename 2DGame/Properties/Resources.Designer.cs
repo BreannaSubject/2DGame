@@ -108,5 +108,15 @@ namespace _2DGame.Properties {
                 return ResourceManager.GetStream("glass_ping_Go445_1207030150", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Water_World {
+            get {
+                object obj = ResourceManager.GetObject("Water_World", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -77,6 +77,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.BackgroundImage = global::_2DGame.Properties.Resources.Water_World;
             this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.gameOverTitle);
             this.Controls.Add(this.exitButton);

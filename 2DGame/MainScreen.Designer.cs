@@ -60,7 +60,7 @@
             // 
             this.spaceLabel.AutoSize = true;
             this.spaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spaceLabel.Location = new System.Drawing.Point(208, 451);
+            this.spaceLabel.Location = new System.Drawing.Point(218, 396);
             this.spaceLabel.Name = "spaceLabel";
             this.spaceLabel.Size = new System.Drawing.Size(451, 29);
             this.spaceLabel.TabIndex = 2;
@@ -72,6 +72,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.BackgroundImage = global::_2DGame.Properties.Resources.Water_World;
             this.Controls.Add(this.spaceLabel);
             this.Controls.Add(this.instrustionsLabel);
             this.Controls.Add(this.titleLabel);
