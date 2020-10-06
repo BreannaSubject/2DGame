@@ -55,7 +55,7 @@
             this.gameOverTitle.Font = new System.Drawing.Font("Playbill", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverTitle.Location = new System.Drawing.Point(0, 0);
             this.gameOverTitle.Name = "gameOverTitle";
-            this.gameOverTitle.Size = new System.Drawing.Size(900, 88);
+            this.gameOverTitle.Size = new System.Drawing.Size(900, 85);
             this.gameOverTitle.TabIndex = 1;
             this.gameOverTitle.Text = "Game Over";
             this.gameOverTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
