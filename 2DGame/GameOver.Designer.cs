@@ -38,6 +38,7 @@
             this.exitButton.BackColor = System.Drawing.Color.Cyan;
             this.exitButton.FlatAppearance.BorderSize = 0;
             this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSeaGreen;
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Location = new System.Drawing.Point(395, 294);
             this.exitButton.Name = "exitButton";
@@ -46,6 +47,7 @@
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.Enter += new System.EventHandler(this.exitButton_Enter);
             // 
             // gameOverTitle
             // 
@@ -63,6 +65,7 @@
             this.playAgainButton.BackColor = System.Drawing.Color.Cyan;
             this.playAgainButton.FlatAppearance.BorderSize = 0;
             this.playAgainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSeaGreen;
+            this.playAgainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSeaGreen;
             this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playAgainButton.Location = new System.Drawing.Point(395, 178);
             this.playAgainButton.Name = "playAgainButton";
@@ -71,6 +74,7 @@
             this.playAgainButton.Text = "Play Again";
             this.playAgainButton.UseVisualStyleBackColor = false;
             this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
+            this.playAgainButton.Enter += new System.EventHandler(this.playAgainButton_Enter);
             // 
             // GameOver
             // 
