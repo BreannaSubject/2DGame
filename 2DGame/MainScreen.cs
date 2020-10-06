@@ -20,13 +20,14 @@ namespace _2DGame
 
         private void MainScreen_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Keys.Space == e.KeyCode)
+            if (Keys.Space == e.KeyCode) 
             {
                 spaceDown = true;
             }
 
-            if (spaceDown == true)
+            if (spaceDown == true) //checks if the space bar has been pressed
             {
+                //goes to game
                 GameScreen gs = new GameScreen();
                 Form f = this.FindForm();
                 f.Controls.Remove(this);
