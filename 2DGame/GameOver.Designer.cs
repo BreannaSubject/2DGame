@@ -53,7 +53,7 @@
             // 
             this.gameOverTitle.BackColor = System.Drawing.Color.DarkCyan;
             this.gameOverTitle.Font = new System.Drawing.Font("Playbill", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameOverTitle.Location = new System.Drawing.Point(0, 0);
+            this.gameOverTitle.Location = new System.Drawing.Point(0, -1);
             this.gameOverTitle.Name = "gameOverTitle";
             this.gameOverTitle.Size = new System.Drawing.Size(900, 85);
             this.gameOverTitle.TabIndex = 1;
